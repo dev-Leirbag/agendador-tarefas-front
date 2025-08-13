@@ -5,6 +5,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { PasswordFiel } from '../../shared/components/password-fiel/password-fiel';
+import { ReactiveFormsModule,FormBuilder, FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -15,9 +16,29 @@ import { PasswordFiel } from '../../shared/components/password-fiel/password-fie
     MatInputModule,
     MatSelectModule,
     PasswordFiel,
+    ReactiveFormsModule
   ],
   templateUrl: './register.html',
   styleUrl: './register.scss',
   encapsulation: ViewEncapsulation.None,
 })
-export class Register {}
+export class Register {
+  form: FormGroup;
+
+  constructor(private formBuilder: FormBuilder) {
+    this.form = this.formBuilder.group({
+      fullName: [''],
+      email: [''],
+      password: [''],
+    });
+  }
+
+  get passwordControl(): FormControl{
+    return this.form.get('password') as FormControl
+  }
+
+  submit() {
+    console.log(this.form.value);
+  }
+
+}
