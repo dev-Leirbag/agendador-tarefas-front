@@ -4,6 +4,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { PasswordFiel } from '../../shared/components/password-fiel/password-fiel';
 
 @Component({
   selector: 'app-register',
@@ -13,6 +14,7 @@ import { MatSelectModule } from '@angular/material/select';
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
+    PasswordFiel,
   ],
   templateUrl: './register.html',
   styleUrl: './register.scss',
