@@ -1,0 +1,36 @@
+<div class="register-component">
+  <mat-card>
+    <mat-card-header class="padding-m">
+      <mat-card-title>Cadastro de Usuario</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form [formGroup]="form">
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Nome Completo</mat-label>
+          <input matInput formControlName="fullName" placeholder="Digite seu nome completo" />
+
+          @if(fullNameErros){
+          <mat-error>{{fullNameErros}}</mat-error>
+          }
+
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" placeholder="Digite seu email" />
+
+          @if(emailErros){
+          <mat-error>{{emailErros}}</mat-error>}
+
+        </mat-form-field>
+
+        <input-password-fiel [control]="passwordControl"></input-password-fiel>
+      </form>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button mat-raised-button class="full-width" [disabled]="form.invalid" (click)="submit()">Cadastrar</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
