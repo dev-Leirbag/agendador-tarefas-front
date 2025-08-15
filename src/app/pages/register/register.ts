@@ -18,7 +18,6 @@ import { CommonModule } from '@angular/common';
     MatSelectModule,
     PasswordFiel,
     ReactiveFormsModule,
-    CommonModule
   ],
   templateUrl: './register.html',
   styleUrl: './register.scss',
@@ -37,6 +36,20 @@ export class Register {
 
   get passwordControl(): FormControl {
     return this.form.get('password') as FormControl
+  }
+
+  get fullNameErros(): string | null {
+    const fullNamecontrol = this.form.get('fullName');
+    if (fullNamecontrol?.hasError("required")) return "O nome completo é um campo obrigatorio";
+    if (fullNamecontrol?.hasError("minlength")) return "O nome tem que ter mais de 3 letras";
+    return null;
+  }
+
+  get emailErros(): string | null {
+    const emailControl = this.form.get("email");
+    if (emailControl?.hasError("required")) return "O e-mail é um campo obrigatorio";
+    if (emailControl?.hasError("email")) return "O e-mail é invalido";
+    return null;
   }
 
   submit() {
