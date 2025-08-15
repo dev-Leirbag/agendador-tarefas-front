@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, input, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
@@ -14,7 +14,14 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 export class PasswordFiel {
   hide = signal(true);
 
-  @Input({required: true}) control!: FormControl;
+  @Input({ required: true }) control!: FormControl;
+
+  get passwordErros(): string | null {
+    const passwordControl = this.control;
+    if (passwordControl?.hasError("required")) return "A senha é um campo obrigatorio";
+    if (passwordControl?.hasError("minlength")) return "A senha precisa ter mais que 6 letras";
+    return null;
+  }
 
   clickEvent(event: MouseEvent) {
     this.hide.set(!this.hide());
