@@ -6,6 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { PasswordFiel } from '../../shared/components/password-fiel/password-fiel';
 import { ReactiveFormsModule, FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-register',
@@ -16,7 +17,8 @@ import { ReactiveFormsModule, FormBuilder, FormGroup, FormControl, Validators } 
     MatInputModule,
     MatSelectModule,
     PasswordFiel,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CommonModule
   ],
   templateUrl: './register.html',
   styleUrl: './register.scss',
