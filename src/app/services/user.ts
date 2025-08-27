@@ -20,7 +20,7 @@ interface UserRegisterPayload {
   }]
 }
 
-interface userRegisterResponse {
+interface UserRegisterResponse {
   nome: string,
   email: string,
   enderecos: [{
@@ -37,6 +37,11 @@ interface userRegisterResponse {
   }] | null
 }
 
+export interface UserLoginPayLoad {
+  email: string,
+  senha: string
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -46,8 +51,12 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  register(body: UserRegisterPayload): Observable<userRegisterResponse> {
-    return this.http.post<userRegisterResponse>(`${this.apiUrl}/usuario`, body);
+  register(body: UserRegisterPayload): Observable<UserRegisterResponse> {
+    return this.http.post<UserRegisterResponse>(`${this.apiUrl}/usuario`, body);
+  }
+
+  login(body: UserLoginPayLoad): Observable<string> {
+    return this.http.post<string>(`${this.apiUrl}/usuario/login`, body, { responseType: 'text' as 'json' });
   }
 
 }
