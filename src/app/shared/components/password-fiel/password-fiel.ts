@@ -15,6 +15,7 @@ export class PasswordFiel {
   hide = signal(true);
 
   @Input({ required: true }) control!: FormControl;
+  @Input() placeholder: string = "Digite a sua senha";
 
   get passwordErros(): string | null {
     const passwordControl = this.control;
